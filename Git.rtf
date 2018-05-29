@@ -1,0 +1,314 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fmodern Lucida Console;}{\f2\fmodern\fcharset0 Lucida Console;}}
+{\colortbl ;\red191\green0\blue0;\red0\green191\blue0;\red191\green0\blue191;\red191\green191\blue0;\red0\green191\blue191;\red64\green255\blue255;\red64\green255\blue64;\red0\green0\blue255;\red255\green64\blue64;}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 client server based VCS -svn clearcase cvs visual sourcesafe\par
+distributed vcs - git no server or clients only nodes will be there  and every node will have data \par
+when ever we want to store code in git , we have to create a repository or folder \par
+which can be shared with others\par
+creating a repository\par
+first create a folder or repository on c:/ then run git init\par
+when you run git init , a hidden folder will be created .git\par
+mkdir src\par
+mkdir docs\par
+touch readme.md\par
+touch src/main.c\par
+basic folder structure\par
+\par
+whenever you wanna add changes to the git it doesnt happen in one shot\par
+two phase cmmit if no server\par
+three phase commit if server there\par
+the changes you have made have to be added to an area called staging area and then all the changes you have added to staging area have to be added to git then you will commit those changes to git\par
+\f1\fs18 $ git status\par
+On branch master\par
+\par
+No commits yet\par
+\par
+Untracked files:\par
+  (use "git add <file>..." to include in what will be committed)\par
+\par
+        \cf1 readme.md\par
+\cf0         \cf1 src/\par
+\par
+\cf0 nothing added to commit but untracked files present (use "git add" to track)\par
+\f0\fs22 untracked files - files whaich are added newly and not commited to git\par
+so add those files to staging area with git add\par
+\cf2\f1\fs18 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  (master)\par
+\cf0 $ git add .\par
+\f2\lang1033 . indicates add all the files \cf4\f1\lang9 My First Repo\cf5  \f2\lang1033 folder to git \cf0\f1\lang9\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  (master)\par
+\cf0 $ git status\par
+On branch master\par
+\par
+No commits yet\par
+\par
+Changes to be committed:\par
+  (use "git rm --cached <file>..." to unstage)\par
+\par
+        \cf2 new file:   readme.md\par
+\cf0         \cf2 new file:   src/main.c\par
+\cf0\f2\lang1033 git will not add empty folders and dince we have not put anything inside docs earlier\par
+after adding these changes to the staging area commit these changes\par
+\f1 $ git commit -m "Added Folder Structure"\par
+\par
+*** Please tell me who you are.\par
+\par
+Run\par
+\par
+  git config --global user.email "you@example.com"\par
+  git config --global user.name "Your Name"\par
+\par
+to set your account's default identity.\par
+Omit --global to set the identity only in this repository.\par
+\par
+fatal: unable to auto-detect email address (got 'rajkiran@Raj-kiran.(none)')\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  (master)\par
+\cf0 $ git config --global user.name "Rajkiran"\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  (master)\par
+\cf0 $  git config --global user.email "Raj.Kanneganti@wipro.com"\par
+$ git commit -m "Added Folder structure"\par
+[master (root-commit) 51ccb36] Added Folder structure\par
+ 2 files changed, 0 insertions(+), 0 deletions(-)\par
+ create mode 100644 readme.md\par
+ create mode 100644 src/main.c\par
+\f2 when ever you commit all the changes will go .git folder not to the server\par
+\f1 $ git status\par
+On branch master\par
+Changes not staged for commit:\par
+  (use "git add <file>..." to update what will be committed)\par
+  (use "git checkout -- <file>..." to discard changes in working directory)\par
+\par
+        \cf1 modified:   readme.md\par
+\par
+\cf0 Untracked files:\par
+  (use "git add <file>..." to include in what will be committed)\par
+\par
+        \cf1 docs/\par
+\cf0         \cf1 test/\par
+\par
+\cf0 no changes added to commit (use "git add" and/or "git commit -a")\par
+\f2 Here if see the output \par
+\cf2\f1\lang9 new file:   readme.md\par
+\cf0         \cf2 new file:   src/main.c\par
+\cf0\f2\lang1033 already we have comimitted them to git and we have modified readme.md here and newly created folders test and docs are there\par
+now i wanna add only modified readme.md to the staging area\par
+\f1 $ git add readme.md\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  (master)\par
+\cf0 $ git status\par
+On branch master\par
+Changes to be committed:\par
+  (use "git reset HEAD <file>..." to unstage)\par
+\par
+        \cf2 modified:   readme.md\par
+\par
+\cf0 Untracked files:\par
+  (use "git add <file>..." to include in what will be committed)\par
+\par
+        \cf1 docs/\par
+\cf0         \cf1 test/\par
+\cf0 $ git commit -m "added line"\par
+[master 8d47ac0] added line\par
+ 1 file changed, 1 insertion(+)\par
+\par
+\f2 Now we ill try to add the docs and test folder to the staging area and commit\par
+\cf2\f1 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  (master)\par
+\cf0 $ git add .\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  (master)\par
+\cf0 $ git status\par
+On branch master\par
+Changes to be committed:\par
+  (use "git reset HEAD <file>..." to unstage)\par
+\par
+        \cf2 new file:   docs/readme.md\par
+\cf0         \cf2 new file:   test/FirstTest.c\par
+\par
+\cf0 $ git commit -m "added the test and doc"\par
+[master ad9a19d] added the test and doc\par
+ 2 files changed, 0 insertions(+), 0 deletions(-)\par
+ create mode 100644 docs/readme.md\par
+ create mode 100644 test/FirstTest.c\par
+\f2 now we wanna check how many changes i have done \par
+\f1 $ git log\par
+\cf4 commit ad9a19d16abb2fdb6c534b2b5e793082cb8256dd (\cf6 HEAD -> \cf7 master\cf4 )\par
+\cf0 Author: Rajkiran <Raj.Kanneganti@wipro.com>\par
+Date:   Wed May 16 18:10:01 2018 +0530\par
+\par
+    added the test and doc\par
+\par
+\cf4 commit 8d47ac0d313ec9218ffac28766af77afa0b9e4f7\par
+\cf0 Author: Rajkiran <Raj.Kanneganti@wipro.com>\par
+Date:   Wed May 16 18:07:58 2018 +0530\par
+\par
+    added line\par
+\par
+\cf4 commit 51ccb36121cb4d42ed61e1ce722cb4b6db2857f8\par
+\cf0 Author: Rajkiran <Raj.Kanneganti@wipro.com>\par
+Date:   Wed May 16 17:55:45 2018 +0530\par
+\par
+    Added Folder structure\par
+\f2 now we can copy entire folder and take it to other computer and do a git status \par
+still the status is same\par
+\cf2\f1 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  (master)\par
+\cf0 $ cd test\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo/test\cf5  (master)\par
+\cf0 $ ls\par
+FirstTest.c\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo/test\cf5  (master)\par
+\cf0 $ rm -rf FirstTest.c\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo/test\cf5  (master)\par
+\cf0 $ touch SecondTest.c\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo/test\cf5  (master)\par
+\cf0 $ git add .\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo/test\cf5  (master)\par
+\cf0 $ git commit -m "added SecondTest"\par
+[master e68365d] added SecondTest\par
+ 1 file changed, 0 insertions(+), 0 deletions(-)\par
+ rename test/\{FirstTest.c => SecondTest.c\} (100%)\par
+$ git log\par
+\cf4 commit e68365d74dd83197ae1e62229dd25ee375b682c1 (\cf6 HEAD -> \cf7 master\cf4 )\par
+\cf0 Author: Rajkiran <Raj.Kanneganti@wipro.com>\par
+Date:   Wed May 16 18:16:42 2018 +0530\par
+\par
+    added SecondTest\par
+\par
+\cf4 commit ad9a19d16abb2fdb6c534b2b5e793082cb8256dd\par
+\cf0 Author: Rajkiran <Raj.Kanneganti@wipro.com>\par
+Date:   Wed May 16 18:10:01 2018 +0530\par
+\par
+    added the test and doc\par
+\par
+\cf4 commit 8d47ac0d313ec9218ffac28766af77afa0b9e4f7\par
+\cf0 Author: Rajkiran <Raj.Kanneganti@wipro.com>\par
+Date:   Wed May 16 18:07:58 2018 +0530\par
+\par
+    added line\par
+\par
+\cf4 commit 51ccb36121cb4d42ed61e1ce722cb4b6db2857f8\par
+\cf0 Author: Rajkiran <Raj.Kanneganti@wipro.com>\par
+Date:   Wed May 16 17:55:45 2018 +0530\par
+\par
+    Added Folder structure\par
+$ git checkout 51ccb36121cb4d42ed61e1ce722cb4b6db2857f8\par
+Note: checking out '51ccb36121cb4d42ed61e1ce722cb4b6db2857f8'.\par
+\par
+You are in 'detached HEAD' state. You can look around, make experimental\par
+changes and commit them, and you can discard any commits you make in this\par
+state without impacting any branches by performing another checkout.\par
+\par
+If you want to create a new branch to retain commits you create, you may\par
+do so (now or later) by using -b with the checkout command again. Example:\par
+\par
+  git checkout -b <new-branch-name>\par
+\par
+HEAD is now at 51ccb36... Added Folder structure\par
+$ git log\par
+\cf4 commit 51ccb36121cb4d42ed61e1ce722cb4b6db2857f8 (\cf6 HEAD\cf4 )\par
+\cf0 Author: Rajkiran <Raj.Kanneganti@wipro.com>\par
+Date:   Wed May 16 17:55:45 2018 +0530\par
+\par
+    Added Folder structure\par
+\f2\par
+here we are making changes ion the local git, how would i share the changes made to others so we need a service who can connet to your system\par
+over http using webserver \par
+over ssh\par
+we will take github server\par
+go and create an a count on github.com\par
+we will get the ode from git server using git clone\par
+\f1 $ git clone {{\field{\*\fldinst{HYPERLINK https://github.com/nagarajujajula/asquarezone.git }}{\fldrslt{https://github.com/nagarajujajula/asquarezone.git\ul0\cf0}}}}\f1\fs18\par
+Cloning into 'asquarezone'...\par
+remote: Counting objects: 42, done.\par
+remote: Total 42 (delta 0), reused 0 (delta 0), pack-reused 42\par
+Unpacking objects: 100% (42/42), done.\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GetCodeFromGitHub\par
+\cf0\f2  \f1 $ git log\par
+\cf4 commit 9bae4ad6cff418bef345e1655561d342779f839c (\cf6 HEAD -> \cf7 master\cf4 , \cf9 origin/master\cf4 , \cf9 origin/integration\cf4 , \cf9 origin/HEAD\cf4 )\par
+\cf0 Merge: 8e82d81 5e69e26\par
+Author: nagarajujajula <nagaraju.jajulaa@gmail.com>\par
+Date:   Sun Nov 12 12:58:33 2017 +0530\par
+\par
+    Merge branch 'BL' into integration\par
+\par
+\cf4 commit 8e82d81f520491761e2c639a67c69d06054b3c12 (\cf9 origin/UIDEV\cf4 )\par
+\cf0 Author: nagarajujajula <nagaraju.jajulaa@gmail.com>\par
+Date:   Sun Nov 12 12:39:15 2017 +0530\par
+\par
+    renamed UI\par
+\par
+\cf4 commit 5e69e26dc12c04beddfffbbbd740e5ec742d2371 (\cf9 origin/BL\cf4 )\par
+\cf0 Author: nagarajujajula <nagaraju.jajulaa@gmail.com>\par
+Date:   Sun Nov 12 06:40:46 2017 +0000\par
+\par
+    Added apache config to MiddleWare\par
+\par
+\cf4 commit 1d223258135f3e4382d66373f8c1351fab87bd83\par
+\cf0 Author: nagarajujajula <nagaraju.jajulaa@gmail.com>\par
+Date:   Sun Nov 12 12:03:37 2017 +0530\par
+\par
+    added home page to UIDEV\par
+\par
+\cf4 commit 004744feaf97fe2c504a5e81ab5b776a756fc5d4\par
+\cf0 Merge: 164c0ab 10fb097\par
+Author: nagarajujajula <nagaraju.jajulaa@gmail.com>\par
+Date:   Sun Nov 12 10:41:40 2017 +0530\par
+\par
+    Merge branch 'master' of {{\field{\*\fldinst{HYPERLINK https://github.com/nagarajujajula/asquarezone }}{\fldrslt{https://github.com/nagarajujajula/asquarezone\ul0\cf0}}}}\f1\fs18\par
+\par
+\cf4 commit 164c0ab8475df0e1480869ea21c2d5d97ab07d07\par
+\cf0 Author: nagarajujajula <nagaraju.jajulaa@gmail.com>\par
+Date:   Sun Nov 12 10:33:38 2017 +0530\par
+\par
+    added changes from windows\par
+\par
+\cf4 commit 10fb097de335621bf361dc683a13e14aa59a891c\par
+\cf0 Author: nagarajujajula <nagaraju.jajulaa@gmail.com>\par
+Date:   Sun Nov 12 05:02:38 2017 +0000\par
+\par
+    added code changes from linux\par
+\par
+\cf4 commit ca4bfee24d16cb6f93e8afd5b25d34d73183866e\par
+\cf0 Author: nagarajujajula <nagaraju.jajulaa@gmail.com>\par
+Date:   Sun Nov 12 10:17:29 2017 +0530\par
+\par
+    added src and test folders\par
+\f2 so we have got the code from github into local machine\par
+\par
+\par
+\cf2\f1 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  ((51ccb36...))\par
+\cf0 $ git config --global user.name "kiranu32935"\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  ((51ccb36...))\par
+\cf0 $ got config --global user.email "rkanneganti4@gmail.com"\par
+bash: got: command not found\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  ((51ccb36...))\par
+\cf0 $ git config --global user.email "rkanneganti4@gmail.com"\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  ((51ccb36...))\par
+\cf0\f2 now create a repository on github and \par
+\cf2\f1 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  ((51ccb36...))\par
+\cf0 $ git remote add origin {{\field{\*\fldinst{HYPERLINK https://github.com/kiranu32935/MyFirstRepo.git }}{\fldrslt{https://github.com/kiranu32935/MyFirstRepo.git\ul0\cf0}}}}\f1\fs18\par
+\par
+\cf2 rajkiran@Raj-kiran \cf3 MINGW64 \cf4 /c/kiran/GitForPractice/My First Repo\cf5  ((51ccb36...))\par
+\cf0 $ git push -u origin master\par
+\f2\par
+\par
+\f1\par
+\cf2\lang9\par
+\par
+\cf0\f0\fs22\par
+\par
+\par
+\par
+\par
+\par
+}
+ 
